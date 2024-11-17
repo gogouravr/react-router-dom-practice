@@ -22,7 +22,7 @@
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HomePage from './pages/Home';
-import EventPage from './pages/Event';
+import EventPage, { loader as eventLoader } from './pages/Event';
 import EventDetailPage from './pages/EventDetail';
 import EditEventPage from './pages/EditEvent';
 import NewEventPage from './pages/NewEvent';
@@ -47,17 +47,7 @@ function App() {
             {
               index: true,
               element: <EventPage />,
-              loader: async () => {
-                const response = await fetch('http://localhost:8080/events');
-
-                if (!response.ok) {
-                  // setError('Fetching events failed.');
-                } else {
-                  const resData = await response.json();
-                  // setFetchedEvents(resData.events);
-                  return resData.events;
-                }
-              }
+              loader: eventLoader
             },
             {
               path: ':eventId',
