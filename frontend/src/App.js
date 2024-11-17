@@ -27,6 +27,8 @@ import EventDetailPage from './pages/EventDetail';
 import EditEventPage from './pages/EditEvent';
 import NewEventPage from './pages/NewEvent';
 import RootLayout from './layouts/RootLayout';
+import EventLayout from './layouts/EventLayout'
+
 
 function App() {
   const router = createBrowserRouter([
@@ -40,6 +42,7 @@ function App() {
         },
         {
           path: '/events',
+          element: <EventLayout />,
           children: [
             {
               index: true,
